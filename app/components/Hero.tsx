@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import HeroSlider from "./HeroSlider";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 export default function Hero() {
   return (
@@ -57,10 +58,15 @@ export default function Hero() {
           </div>
 
           <div className="w-full sm:w-auto">
-            <button className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-[#c8a24a] text-black px-10 py-4 rounded-lg font-bold hover:bg-[#b08d3a] transition-all duration-300 shadow-xl shadow-black/20 active:scale-95">
+            <button className="group w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-[#c8a24a] text-black px-10 py-4 rounded-lg font-bold hover:bg-[#b08d3a] transition-all duration-300 shadow-xl shadow-black/20 active:scale-95">
               Get My Online Quote
-              <span className="text-xl">→</span>
+              <span className="text-xl transition-transform duration-300 group-hover:translate-x-2">
+                <FaArrowRightLong />
+              </span>
             </button>
+            <h4 className="mt-4 text-white/60 text-[12px]">
+              Takes less than 60 seconds · No obligation
+            </h4>
           </div>
         </div>
 
