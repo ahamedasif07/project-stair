@@ -1,10 +1,13 @@
 "use client";
 import Image from "next/image";
+import HeroSlider from "./HeroSlider";
+import HeroSliderTwo from "./HeroSliderTwo";
+import SliderLast from "./SliderLast";
 
 export default function Hero() {
   return (
     <section
-      className="relative overflow-hidden flex items-center"
+      className="relative overflow-hidden flex items-center "
       style={{
         height: "calc(100vh - 50px)", // Full screen height minus 40px
         backgroundImage: "url('/assets/images/stair-bg-img.jpg')",
@@ -14,17 +17,20 @@ export default function Hero() {
       }}
     >
       <div
-        className="absolute inset-0 z-0 backdrop-blur-sm"
-        style={{
-          backgroundColor: "rgba(42, 41, 40, 0.85)", // #2A2928 with 85% opacity
-        }}
+        className="
+    absolute inset-0 z-0 backdrop-blur-[2px]
+    bg-gradient-to-br
+    from-[#1a1a1a]
+    to-[#2d2d2d]
+    opacity-95
+  "
       ></div>
 
       <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 px-6 py-24 items-center w-full">
         {/* Left Content */}
         <div>
           <div className="flex items-center gap-3 mb-4">
-            <span className="w-8 h-[1px] bg-[#c8a24a]"></span>
+            <span className="w-10 h-[2px] bg-[#c8a24a]"></span>
             <p className="uppercase tracking-widest text-[#c8a24a] text-xs font-bold">
               Premium LVP Flooring & Stairs
             </p>
@@ -61,50 +67,8 @@ export default function Hero() {
         </div>
 
         {/* Right Slider (Visual Mockup for the Card stacking effect) */}
-        <div className="relative flex justify-center lg:justify-end items-center h-[500px]">
-          {/* Background Card (Left) */}
-          <div className="absolute left-10 scale-90 opacity-40 blur-[1px] rotate-[-5deg] hidden xl:block">
-            <div className="w-[260px] h-[400px] rounded-2xl overflow-hidden border border-white/20">
-              <Image
-                src="/stairs.jpg"
-                alt="prev"
-                fill
-                className="object-cover grayscale"
-              />
-            </div>
-          </div>
-
-          {/* Main Active Card */}
-          <div className="relative z-20 w-[300px] h-[460px] rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 group">
-            <Image
-              src="/stairs.jpg"
-              alt="Wooden Stairs"
-              fill
-              className="object-cover transition-transform duration-700 group-hover:scale-110"
-            />
-
-            {/* Card Content Overlay */}
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 text-center">
-              <p className="text-white text-lg font-medium">Wooden Stairs</p>
-              <div className="flex justify-center gap-1.5 mt-3">
-                <span className="h-1.5 w-8 bg-[#c8a24a] rounded-full" />
-                <span className="h-1.5 w-1.5 bg-white/30 rounded-full" />
-                <span className="h-1.5 w-1.5 bg-white/30 rounded-full" />
-              </div>
-            </div>
-          </div>
-
-          {/* Background Card (Right) */}
-          <div className="absolute right-[-20px] scale-90 opacity-40 blur-[1px] rotate-[5deg] hidden xl:block">
-            <div className="w-[260px] h-[400px] rounded-2xl overflow-hidden border border-white/20">
-              <Image
-                src="/stairs.jpg"
-                alt="next"
-                fill
-                className="object-cover grayscale"
-              />
-            </div>
-          </div>
+        <div className="relative flex justify-center lg:justify-end items-center ">
+          <HeroSlider />
         </div>
       </div>
     </section>

@@ -8,3 +8,7 @@ body {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
 }
+
+.heroBg {
+  background: linear-gradient(135deg, rgb(26, 26, 26) 0%, rgb(45, 45, 45) 100%);
+}
