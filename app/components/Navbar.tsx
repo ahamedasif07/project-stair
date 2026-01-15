@@ -1,22 +1,37 @@
-/* ================= components/Nav.tsx ================= */
 "use client";
 
+import Image from "next/image";
+import { FaArrowRightLong } from "react-icons/fa6";
+import { FiPhone, FiMail } from "react-icons/fi";
+import logo from "../../public/assets/images/stair.png";
 export default function Navbar() {
   return (
-    <nav className="w-full bg-[#2C2C2C] to-transparent py-[14px]">
-      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between text-sm text-gray-300">
+    <nav className="w-full bg-[#2C2C2C] py-4">
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between text-sm text-gray-300">
+        {/* Left: Logo + Info */}
         <div className="flex items-center gap-6">
-          {/* Logo */}
-          <div className="h-6 w-28 bg-white rounded" />
-          <span className="text-[#c8a24a]">
-            Need help measuring? Book a free visit! →
-          </span>
+          {/* Logo Image */}
+          <Image
+            src={logo}
+            alt="Logo"
+            width={112}
+            height={24}
+            className="object-contain"
+          />
+
+          <h2 className="text-[#c8a24a] flex items-center gap-2">
+            Need help measuring? Book a free visit! <FaArrowRightLong />
+          </h2>
         </div>
 
+        {/* Right: Contact Info */}
         <div className="flex items-center gap-6">
-          <span className="flex items-center gap-2">📞 +1 (321) 805-4605</span>
-          <span className="flex items-center gap-2">
-            ✉️ alphflooring@gmail.com
+          <span className="flex items-center text-[17px] text-white gap-2">
+            <FiPhone className="text-[#C9A961] text-[18px]" /> +1 (321) 805-4605
+          </span>
+          <span className="flex items-center text-[17px] text-white  gap-2">
+            <FiMail className="text-[#C9A961] text-[18px]" />
+            alphflooring@gmail.com
           </span>
         </div>
       </div>
