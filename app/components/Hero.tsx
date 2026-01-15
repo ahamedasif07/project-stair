@@ -67,7 +67,7 @@ export default function Hero() {
         </div>
 
         {/* Right Slider (Visual Mockup for the Card stacking effect) */}
-        <div className="relative flex justify-center lg:justify-end items-center ">
+        <div className="asif">
           <HeroSlider />
         </div>
       </div>

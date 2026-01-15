@@ -109,8 +109,8 @@ const CarouselSlider: React.FC = () => {
           height: 400px;
           top: 50%;
           left: 50%;
-          margin-left: -175px;
-          margin-top: -225px;
+          margin-left: -150px;
+          margin-top: -190px;
           background: #1a1a1a;
           border-radius: 30px;
 
@@ -122,14 +122,14 @@ const CarouselSlider: React.FC = () => {
 
         /* Active center card */
         .slide-item.active {
-          transform: translateX(0) -translateZ(10px) rotateY(0deg) scale(1.15);
+          transform: translateX(0) translateZ(10px) rotateY(0deg) scale(1.15);
           z-index: 10;
           opacity: 1;
         }
 
         /* Next card - right side with perspective tilt */
         .slide-item.next {
-          transform: translateX(200px) translateZ(-180px) rotateY(-55deg)
+          transform: translateX(200px) translateZ(-60px) rotateY(-55deg)
             scale(0.85);
           z-index: 5;
           opacity: 0.6;
@@ -137,7 +137,7 @@ const CarouselSlider: React.FC = () => {
 
         /* Previous card - left side with perspective tilt */
         .slide-item.prev {
-          transform: translateX(-200px) translateZ(-180px) rotateY(55deg)
+          transform: translateX(-200px) translateZ(-150px) rotateY(55deg)
             scale(0.85);
           z-index: 5;
           opacity: 0.6;
@@ -186,18 +186,18 @@ const CarouselSlider: React.FC = () => {
 
         .slide-title {
           font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-          font-size: 23px;
-          font-weight: 400;
+          font-size: 26px;
+          font-weight: 600;
           color: #fff;
           margin: 0;
-          text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+          text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
           letter-spacing: 0.5px;
         }
 
         /* Navigation arrows */
         .arrow-btn {
           position: absolute;
-          top: 50%;
+          top: 55%;
           transform: translateY(-50%);
           width: 60px;
           height: 60px;
@@ -225,17 +225,17 @@ const CarouselSlider: React.FC = () => {
         }
 
         .arrow-btn.left {
-          left: 50px;
+          left: 40px;
         }
 
         .arrow-btn.right {
-          right: 50px;
+          right: 40px;
         }
 
         /* Dots indicator */
         .dots-indicator {
           position: absolute;
-          bottom: 40px;
+          bottom: 20px;
           left: 50%;
           transform: translateX(-50%);
           display: flex;
@@ -354,14 +354,14 @@ const CarouselSlider: React.FC = () => {
             {slides.map((slide, index) => (
               <div
                 key={slide.id}
-                className={`slide-item ${getSlideClass(index)} border-2 `}
+                className={`slide-item ${getSlideClass(index)}`}
                 onClick={() => {
                   if (index !== activeIndex) {
                     handleDotClick(index);
                   }
                 }}
               >
-                <div className="slide-image-wrapper border-2 border-amber-400">
+                <div className="slide-image-wrapper ">
                   <img
                     src={slide.image}
                     alt={slide.title}
