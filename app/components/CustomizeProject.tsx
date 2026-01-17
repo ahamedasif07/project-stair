@@ -2,12 +2,13 @@
 import React, { useState } from "react";
 import { FaStairs, FaHouse, FaLayerGroup } from "react-icons/fa6";
 import { motion, AnimatePresence, Variants } from "framer-motion";
+import StairsOnly from "./froms/StairsOnly";
+import FloorOnly from "./froms/FloorOnly";
+
+import SidebarSummary from "./froms/SidebarSummary";
+import FloorAndStairs from "./froms/FloorAndStairs";
 
 // Sub-components
-import StairsForm from "./froms/StairsForm";
-import FloorForm from "./froms/FloorFrom";
-import CombinedForm from "./froms/CombinedForm";
-import SidebarSummary from "./froms/SidebarSummary";
 
 const CustomizeProject = () => {
   const [projectType, setProjectType] = useState("Stairs Only");
@@ -41,13 +42,13 @@ const CustomizeProject = () => {
   const renderForm = () => {
     switch (projectType) {
       case "Stairs Only":
-        return <StairsForm />;
+        return <StairsOnly />;
       case "Floor Only":
-        return <FloorForm />;
+        return <FloorOnly />;
       case "Floor & Stairs":
-        return <CombinedForm />;
+        return <FloorAndStairs />;
       default:
-        return <StairsForm />;
+        return <StairsOnly />;
     }
   };
 

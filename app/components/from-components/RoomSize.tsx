@@ -1,13 +1,15 @@
 "use client";
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useFormContext } from "../custom/FormContext";
 
 type RoomSizeProps = {
   roomSizes: string[]; // roomSizes array receive kora holo
   handleSizeChange: (index: number, value: string) => void;
 };
 
-const RoomSize = ({ roomSizes, handleSizeChange }: RoomSizeProps) => {
+const RoomSize = () => {
+  const { roomSizes, handleSizeChange } = useFormContext();
   return (
     <div className="w-full">
       <span className="text-[11px] uppercase tracking-[0.15em] text-[#c8a24a] font-bold block mb-2">

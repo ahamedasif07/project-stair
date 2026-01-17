@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { motion, Variants } from "framer-motion";
+import { useFormContext } from "../custom/FormContext";
 
 type StartProjectProps = {
   timeline: string;
@@ -28,7 +29,8 @@ const itemVariants: Variants = {
   },
 };
 
-const StartProject = ({ setTimeline, timeline }: StartProjectProps) => {
+const StartProject = () => {
+  const { timeline, setTimeline } = useFormContext();
   return (
     <motion.div
       className="p-1"

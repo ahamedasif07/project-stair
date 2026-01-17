@@ -38,9 +38,11 @@ export const FormProvider = ({ children }: { children: ReactNode }) => {
   ];
 
   // Logic Functions
+  // Step 2 theke room count change hole eikhane array update hobe
   const handleRoomCountChange = (count: number) => {
     setRoomCount(count);
     const newSizes = Array(count).fill("");
+    // Agonkar value gulo retain korbe (jodi thake)
     roomSizes.forEach((val, i) => {
       if (i < count) newSizes[i] = val;
     });

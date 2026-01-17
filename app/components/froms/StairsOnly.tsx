@@ -6,7 +6,7 @@ import VinylFenish from "../from-components/FinishColor";
 import StartProject from "../from-components/StartProject";
 import FromButtons from "../from-components/FromButtons";
 
-const StairsForm = () => {
+const StairsOnly = () => {
   // const [stairShape, setStairShape] = useState("");
   // const [selectedFinish, setSelectedFinish] = useState("Light Oak");
   // const [timeline, setTimeline] = useState("");
@@ -45,12 +45,12 @@ const StairsForm = () => {
       {/* Action Buttons */}
       <div className="space-y-3 pt-4">
         <FromButtons
-          buttonOne=" Continue to Contact Information"
-          buttonTwo="  Skip to Schedule"
+          buttonOne="Continue to Contact Information"
+          buttonTwo="Skip to Schedule"
         />
       </div>
     </div>
   );
 };
 
-export default StairsForm;
+export default StairsOnly;

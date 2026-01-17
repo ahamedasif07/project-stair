@@ -1,14 +1,13 @@
 "use client";
 import React from "react";
+import { useFormContext } from "../custom/FormContext";
 type FlooringRemovalProps = {
   selectedOption: string;
   setSelectedOption: (val: string) => void;
 };
 
-const FlooringRemoval = ({
-  selectedOption,
-  setSelectedOption,
-}: FlooringRemovalProps) => {
+const FlooringRemoval = () => {
+  const { removalType, setRemovalType } = useFormContext();
   const options = [
     { id: "none", label: "No removal needed (new construction)", price: "" },
     { id: "carpet", label: "Remove old carpet", price: "+$1.5/sqft" },
@@ -30,9 +29,9 @@ const FlooringRemoval = ({
         {options.map((option) => (
           <div
             key={option.id}
-            onClick={() => setSelectedOption(option.id)}
+            onClick={() => setRemovalType(option.id)}
             className={`flex items-center justify-between h-[64px] px-5 border-[1.5px] rounded-xl cursor-pointer transition-all duration-200 ${
-              selectedOption === option.id
+              removalType === option.id
                 ? "border-[#c8a24a] bg-[#faf7f0] shadow-sm"
                 : "border-gray-100 bg-white hover:border-gray-200"
             }`}
@@ -41,20 +40,18 @@ const FlooringRemoval = ({
               {/* Custom Radio Circle */}
               <div
                 className={`w-5 h-5 rounded-full border-[1.5px] flex items-center justify-center transition-colors ${
-                  selectedOption === option.id
+                  removalType === option.id
                     ? "border-[#c8a24a]"
                     : "border-gray-300"
                 }`}
               >
-                {selectedOption === option.id && (
+                {removalType === option.id && (
                   <div className="w-[10px] h-[10px] rounded-full bg-[#c8a24a]" />
                 )}
               </div>
               <span
                 className={`text-[15px] font-medium ${
-                  selectedOption === option.id
-                    ? "text-gray-900"
-                    : "text-gray-700"
+                  removalType === option.id ? "text-gray-900" : "text-gray-700"
                 }`}
               >
                 {option.label}

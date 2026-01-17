@@ -1,11 +1,13 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import { useFormContext } from "../custom/FormContext";
 type RoomProps = {
   roomCount: number;
   setRoomCount: (value: number) => void;
 };
-const RoomSelection = ({ roomCount, setRoomCount }: RoomProps) => {
+const RoomSelection = () => {
+  const { handleRoomCountChange, roomCount } = useFormContext();
   const rooms = [1, 2, 3, 4, 5];
   return (
     <div className="w-full">
@@ -20,7 +22,7 @@ const RoomSelection = ({ roomCount, setRoomCount }: RoomProps) => {
         {rooms.map((num) => (
           <button
             key={num}
-            onClick={() => setRoomCount(num)}
+            onClick={() => handleRoomCountChange(num)}
             className={`flex flex-col items-center justify-center py-5 rounded-xl border-[1.5px] transition-all duration-300 ${
               roomCount === num
                 ? "border-[#c8a24a] bg-[#faf7f0] ring-1 ring-[#c8a24a]"

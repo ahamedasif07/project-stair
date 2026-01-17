@@ -27,7 +27,10 @@ const itemVariants: Variants = {
   },
 };
 
-const FromButtons = ({ buttonOne, buttonTwo }: buttonProps) => {
+const FromButtons = ({
+  buttonOne = " Continue to Contact Information",
+  buttonTwo = "Skip to Schedule",
+}: buttonProps) => {
   return (
     <motion.div
       className="flex flex-col gap-4 mt-10" // flex-col use korle spacing control kora shohoj
