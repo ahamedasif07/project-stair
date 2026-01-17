@@ -5,7 +5,7 @@ import CustomizeProject from "./components/CustomizeProject";
 
 const Home = () => {
   return (
-    <div className="">
+    <div className="overflow-hidden">
       <Hero />
       <HowItWorks />
       <CustomizeProject />
