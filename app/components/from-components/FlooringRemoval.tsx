@@ -1,12 +1,11 @@
 "use client";
 import React from "react";
 import { useFormContext } from "../custom/FormContext";
-type FlooringRemovalProps = {
-  selectedOption: string;
-  setSelectedOption: (val: string) => void;
+type step = {
+  step: string;
 };
 
-const FlooringRemoval = () => {
+const FlooringRemoval = ({ step = "" }: step) => {
   const { removalType, setRemovalType } = useFormContext();
   const options = [
     { id: "none", label: "No removal needed (new construction)", price: "" },
@@ -19,7 +18,7 @@ const FlooringRemoval = () => {
   return (
     <div className="w-full">
       <span className="text-[11px] uppercase tracking-[0.15em] text-[#c8a24a] font-bold block mb-2">
-        Step 4
+        {step}
       </span>
       <h2 className="text-[28px] font-semibold text-gray-900 mb-8 leading-tight">
         Do you need old flooring removed?

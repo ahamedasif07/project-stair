@@ -32,13 +32,13 @@ export default function FloorForm() {
   return (
     <div className="space-y-12">
       {/* Step 2: Room Selection - handleRoomCountChange pathate hobe */}
-      <RoomSelection />
+      <RoomSelection step="step 2" />
 
       {/* Step 3: Room Size Input - roomSizes array pathate hobe */}
-      <RoomSize />
+      <RoomSize step="step 3" />
 
       {/* Step 4: Removal Options */}
-      <FlooringRemoval />
+      <FlooringRemoval step="step 4" />
 
       {/* Debug Info */}
       <div className="mt-8 p-4 bg-gray-50 rounded-lg text-xs text-gray-500 italic">
@@ -47,9 +47,9 @@ export default function FloorForm() {
       </div>
 
       {/* vinylFenish */}
-      <FinishColor />
+      <FinishColor step="step 5" />
       {/* start yout project */}
-      <StartProject />
+      <StartProject step="step 6" />
       {/* buttons */}
       <FromButtons
         buttonOne=" Continue to Contact Information"

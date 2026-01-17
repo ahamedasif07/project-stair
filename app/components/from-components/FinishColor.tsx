@@ -35,8 +35,10 @@ const itemVariants: Variants = {
     transition: { duration: 0.4, ease: "easeOut" },
   },
 };
-
-const FinishColor = () => {
+type step = {
+  step: string;
+};
+const FinishColor = ({ step = "" }: step) => {
   const { finishes, setSelectedFinish, selectedFinish } = useFormContext();
   return (
     <motion.div
@@ -55,7 +57,7 @@ const FinishColor = () => {
             variants={itemVariants}
             className="text-[10px] uppercase tracking-widest text-[#c8a24a] font-bold block"
           >
-            Step 4
+            {step}
           </motion.span>
           <motion.h2
             variants={itemVariants}

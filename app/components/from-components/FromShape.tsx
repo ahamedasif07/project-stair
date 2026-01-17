@@ -29,7 +29,10 @@ const itemVariants: Variants = {
   },
 };
 
-const FromShape = () => {
+type step = {
+  step: string;
+};
+const FromShape = ({ step = "" }: step) => {
   const { stairShape, setStairShape } = useFormContext();
   return (
     <motion.div
@@ -48,7 +51,7 @@ const FromShape = () => {
         variants={itemVariants}
         className="text-[10px] uppercase tracking-widest text-[#c8a24a] font-bold block"
       >
-        Step 2
+        {step}
       </motion.span>
 
       {/* Heading */}

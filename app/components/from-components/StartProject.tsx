@@ -28,8 +28,11 @@ const itemVariants: Variants = {
     transition: { duration: 0.5, ease: "easeOut" },
   },
 };
+type step = {
+  step: string;
+};
 
-const StartProject = () => {
+const StartProject = ({ step = "" }: step) => {
   const { timeline, setTimeline } = useFormContext();
   return (
     <motion.div
@@ -49,7 +52,7 @@ const StartProject = () => {
           variants={itemVariants}
           className="text-[10px] uppercase tracking-widest text-[#c8a24a] font-bold block"
         >
-          Step 5
+          {step}
         </motion.span>
         <motion.h2
           variants={itemVariants}

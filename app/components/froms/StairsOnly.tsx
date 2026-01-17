@@ -24,22 +24,22 @@ const StairsOnly = () => {
     <div className="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
       {/* STEP 2: Stair Shape */}
       <div className="space-y-4">
-        <FromShape />
+        <FromShape step="step 2" />
       </div>
 
       {/* STEP 3: Stair Details */}
       <div className="space-y-6">
-        <StairDetails />
+        <StairDetails step="step 3" />
       </div>
 
       {/* STEP 4: Vinyl Finish */}
       <div className="space-y-6">
-        <VinylFenish />
+        <VinylFenish step="step 4" />
       </div>
 
       {/* STEP 5: Timeline */}
       <div className="space-y-6">
-        <StartProject />
+        <StartProject step="step 5" />
       </div>
 
       {/* Action Buttons */}

@@ -6,13 +6,16 @@ type RoomProps = {
   roomCount: number;
   setRoomCount: (value: number) => void;
 };
-const RoomSelection = () => {
+type step = {
+  step: string;
+};
+const RoomSelection = ({ step = "" }: step) => {
   const { handleRoomCountChange, roomCount } = useFormContext();
   const rooms = [1, 2, 3, 4, 5];
   return (
     <div className="w-full">
       <span className="text-[11px] uppercase tracking-[0.15em] text-[#c8a24a] font-bold block mb-2">
-        Step 2
+        {step}
       </span>
       <h2 className="text-[28px] font-semibold text-gray-900 mb-6 leading-tight">
         How many rooms need flooring?

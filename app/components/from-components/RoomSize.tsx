@@ -7,13 +7,15 @@ type RoomSizeProps = {
   roomSizes: string[]; // roomSizes array receive kora holo
   handleSizeChange: (index: number, value: string) => void;
 };
-
-const RoomSize = () => {
+type step = {
+  step: string;
+};
+const RoomSize = ({ step = "" }: step) => {
   const { roomSizes, handleSizeChange } = useFormContext();
   return (
     <div className="w-full">
       <span className="text-[11px] uppercase tracking-[0.15em] text-[#c8a24a] font-bold block mb-2">
-        Step 3
+        {step}
       </span>
       <h2 className="text-[28px] font-semibold text-gray-900 mb-1 leading-tight">
         Enter the size of each room

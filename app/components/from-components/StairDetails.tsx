@@ -22,8 +22,10 @@ const itemVariants: Variants = {
     transition: { duration: 0.5, ease: "easeOut" },
   },
 };
-
-const StairDetails = () => {
+type step = {
+  step: string;
+};
+const StairDetails = ({ step = "" }: step) => {
   return (
     <motion.div
       className="p-1"
@@ -42,7 +44,7 @@ const StairDetails = () => {
           variants={itemVariants}
           className="text-[10px] uppercase tracking-widest text-[#c8a24a] font-bold block"
         >
-          Step 3
+          {step}
         </motion.span>
         <motion.h2
           variants={itemVariants}
