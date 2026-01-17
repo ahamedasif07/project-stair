@@ -2,29 +2,29 @@
 import React, { useState } from "react";
 import FromShape from "../from-components/FromShape";
 import StairDetails from "../from-components/StairDetails";
-import VinylFenish from "../from-components/VinylFenish";
+import VinylFenish from "../from-components/FinishColor";
 import StartProject from "../from-components/StartProject";
 import FromButtons from "../from-components/FromButtons";
 
 const StairsForm = () => {
-  const [stairShape, setStairShape] = useState("");
-  const [selectedFinish, setSelectedFinish] = useState("Light Oak");
-  const [timeline, setTimeline] = useState("");
+  // const [stairShape, setStairShape] = useState("");
+  // const [selectedFinish, setSelectedFinish] = useState("Light Oak");
+  // const [timeline, setTimeline] = useState("");
 
-  const finishes = [
-    { name: "Light Oak", color: "bg-[#EBDCC3]" },
-    { name: "Natural Oak", color: "bg-[#C6A674]" },
-    { name: "Warm Brown", color: "bg-[#967451]" },
-    { name: "Dark Walnut", color: "bg-[#5B4033]" },
-    { name: "Gray Tones", color: "bg-[#9CA3AF]" },
-    { name: "Other", color: "bg-[#D1D5DB]" },
-  ];
+  // const finishes = [
+  //   { name: "Light Oak", color: "bg-[#EBDCC3]" },
+  //   { name: "Natural Oak", color: "bg-[#C6A674]" },
+  //   { name: "Warm Brown", color: "bg-[#967451]" },
+  //   { name: "Dark Walnut", color: "bg-[#5B4033]" },
+  //   { name: "Gray Tones", color: "bg-[#9CA3AF]" },
+  //   { name: "Other", color: "bg-[#D1D5DB]" },
+  // ];
 
   return (
     <div className="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
       {/* STEP 2: Stair Shape */}
       <div className="space-y-4">
-        <FromShape stairShape={stairShape} setStairShape={setStairShape} />
+        <FromShape />
       </div>
 
       {/* STEP 3: Stair Details */}
@@ -34,16 +34,12 @@ const StairsForm = () => {
 
       {/* STEP 4: Vinyl Finish */}
       <div className="space-y-6">
-        <VinylFenish
-          finishes={finishes}
-          selectedFinish={selectedFinish}
-          setSelectedFinish={setSelectedFinish}
-        />
+        <VinylFenish />
       </div>
 
       {/* STEP 5: Timeline */}
       <div className="space-y-6">
-        <StartProject setTimeline={setTimeline} timeline={timeline} />
+        <StartProject />
       </div>
 
       {/* Action Buttons */}

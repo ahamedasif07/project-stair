@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { motion, Variants } from "framer-motion";
+import { useFormContext } from "../custom/FormContext";
 
 type ShapeProps = {
   stairShape: string;
@@ -28,7 +29,8 @@ const itemVariants: Variants = {
   },
 };
 
-const FromShape = ({ stairShape, setStairShape }: ShapeProps) => {
+const FromShape = () => {
+  const { stairShape, setStairShape } = useFormContext();
   return (
     <motion.div
       className="p-2"

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import RoomSelection from "../from-components/RoomSelection";
 import RoomSize from "../from-components/RoomSize";
 import FlooringRemoval from "../from-components/FlooringRemoval";
+import FinishColor from "../from-components/FinishColor";
 
 export default function FloorForm() {
   const [roomCount, setRoomCount] = useState<number>(1);
@@ -48,6 +49,8 @@ export default function FloorForm() {
         Debug Info: Rooms: {roomCount} | Sizes: [{roomSizes.join(", ")}] |
         Removal: {removalType}
       </div>
+
+      {/* vinylFenish */}
     </div>
   );
 }

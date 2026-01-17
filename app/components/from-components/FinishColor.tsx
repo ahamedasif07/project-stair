@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { motion, Variants } from "framer-motion";
+import { useFormContext } from "../custom/FormContext";
 
 export type Finish = {
   name: string;
@@ -35,11 +36,8 @@ const itemVariants: Variants = {
   },
 };
 
-const VinylFenish = ({
-  finishes,
-  selectedFinish,
-  setSelectedFinish,
-}: VinylProps) => {
+const FinishColor = () => {
+  const { finishes, setSelectedFinish, selectedFinish } = useFormContext();
   return (
     <motion.div
       className="p-1"
@@ -117,4 +115,4 @@ const VinylFenish = ({
   );
 };
 
-export default VinylFenish;
+export default FinishColor;
