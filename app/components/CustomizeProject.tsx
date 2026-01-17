@@ -89,29 +89,66 @@ const CustomizeProject = () => {
             >
               What type of project do you need?
             </motion.h2>
-
+            {/* chose your category */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {[
-                { label: "Stairs Only", icon: <FaStairs /> },
-                { label: "Floor Only", icon: <FaHouse /> },
-                { label: "Floor & Stairs", icon: <FaLayerGroup /> },
-              ].map((item) => (
-                <motion.button
-                  key={item.label}
-                  variants={itemVariants}
-                  whileHover={{ scale: 1.03, y: -5 }}
-                  whileTap={{ scale: 0.97 }}
-                  onClick={() => setProjectType(item.label)}
-                  className={`p-6 border-2 rounded-xl flex flex-col items-center gap-3 transition-colors duration-300 ${
-                    projectType === item.label
-                      ? "border-[#c8a24a] bg-[#faf7f0] shadow-md"
-                      : "border-gray-100 hover:border-gray-200"
-                  }`}
-                >
-                  <span className="text-3xl text-[#8b6d2e]">{item.icon}</span>
-                  <span className="text-sm font-medium">{item.label}</span>
-                </motion.button>
-              ))}
+                { label: "Stairs Only", icon: "🪜" },
+                { label: "Floor Only", icon: "🏠" },
+                { label: "Floor & Stairs", icon: "✨" },
+              ].map((item) => {
+                const isSelected = projectType === item.label;
+
+                return (
+                  <motion.button
+                    key={item.label}
+                    variants={itemVariants}
+                    whileHover={{ scale: 1.03, y: -5 }}
+                    whileTap={{ scale: 0.97 }}
+                    onClick={() => setProjectType(item.label)}
+                    className={`p-6 border-2 rounded-xl flex flex-col items-center gap-4 transition-all duration-300 ${
+                      isSelected
+                        ? "border-[#c8a24a] bg-[#faf7f0] shadow-md"
+                        : "border-gray-100 hover:border-gray-200 bg-white"
+                    }`}
+                  >
+                    {/* উপরের আইকন */}
+                    <span
+                      className={`text-3xl ${
+                        isSelected ? "text-[#8b6d2e]" : "text-gray-400"
+                      }`}
+                    >
+                      {item.icon}
+                    </span>
+
+                    {/* নিচের অংশ: চেক বক্স + টেক্সট */}
+                    <div className="flex items-center gap-2">
+                      {/* গোল চেক বক্স */}
+                      <div
+                        className={`w-4 h-4 rounded-full border-2 flex items-center justify-center transition-colors ${
+                          isSelected ? "border-[#c8a24a]" : "border-gray-300"
+                        }`}
+                      >
+                        {isSelected && (
+                          <motion.div
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            className="w-2 h-2 bg-[#c8a24a] rounded-full"
+                          />
+                        )}
+                      </div>
+
+                      {/* টেক্সট */}
+                      <span
+                        className={`text-sm font-medium ${
+                          isSelected ? "text-gray-900" : "text-gray-600"
+                        }`}
+                      >
+                        {item.label}
+                      </span>
+                    </div>
+                  </motion.button>
+                );
+              })}
             </div>
           </motion.div>
 
