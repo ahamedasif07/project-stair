@@ -72,6 +72,9 @@ export const FormProvider = ({ children }: { children: ReactNode }) => {
     setRoomSizes(updatedSizes);
   };
   console.log(methods.getValues("stairShape"));
+  console.log(methods.watch("numberOfSteps"));
+  console.log(methods.watch("numberOfLandings"));
+  console.log(methods.watch("numberOfBoxSteps"));
   return (
     <RHFFormProvider {...methods}>
       <FormContext.Provider

@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { motion, Variants } from "framer-motion";
+import { useFormContext } from "../custom/FormContext"; // আপনার কনটেক্সট পাথ অনুযায়ী ঠিক করে নিন
 
 // Animation settings
 const containerVariants: Variants = {
@@ -22,20 +23,21 @@ const itemVariants: Variants = {
     transition: { duration: 0.5, ease: "easeOut" },
   },
 };
-type step = {
+
+type StepProps = {
   step: string;
 };
-const StairDetails = ({ step = "" }: step) => {
+
+const StairDetails = ({ step = "" }: StepProps) => {
+  // কনটেক্সট থেকে register মেথডটি নিয়ে আসা
+  const { register } = useFormContext();
+
   return (
     <motion.div
       className="p-1"
       variants={containerVariants}
       initial="hidden"
-      // 'animate' bad diye 'whileInView' use kora hoyeche scroll trigger er jonno
       whileInView="visible"
-      // viewport settings:
-      // amount: 0.2 mane 20% component dekha gele animation shuru hobe
-      // once: true mane ekbar scroll kore asle animation hobe, bar bar hobe na
       viewport={{ once: false, amount: 0.2 }}
     >
       {/* Heading Section */}
@@ -56,7 +58,7 @@ const StairDetails = ({ step = "" }: step) => {
 
       {/* Form Section */}
       <div className="space-y-5">
-        {/* Number of steps - Full Width */}
+        {/* Number of steps */}
         <motion.div variants={itemVariants}>
           <label className="block text-xs font-semibold text-gray-600 mb-2 uppercase tracking-tight">
             Number of steps *
@@ -64,6 +66,12 @@ const StairDetails = ({ step = "" }: step) => {
           <input
             type="number"
             placeholder="Enter number of steps"
+            // Register ব্যবহার করে ডাটা বাইন্ডিং
+            {...register("numberOfSteps", {
+              required: "Required",
+              valueAsNumber: true, // ডাটা নাম্বার হিসেবে সেভ হবে
+              min: 0,
+            })}
             className="w-full p-3.5 bg-white border border-gray-200 rounded-lg outline-none focus:ring-2 focus:ring-[#c8a24a]/20 focus:border-[#c8a24a] transition-all"
           />
         </motion.div>
@@ -76,7 +84,8 @@ const StairDetails = ({ step = "" }: step) => {
             </label>
             <input
               type="number"
-              defaultValue="0"
+              // Register ব্যবহার করে ডাটা বাইন্ডিং
+              {...register("numberOfLandings", { valueAsNumber: true })}
               className="w-full p-3.5 border border-gray-200 rounded-lg outline-none focus:ring-2 focus:ring-[#c8a24a]/20 focus:border-[#c8a24a] transition-all"
             />
           </motion.div>
@@ -87,7 +96,8 @@ const StairDetails = ({ step = "" }: step) => {
             </label>
             <input
               type="number"
-              defaultValue="0"
+              // Register ব্যবহার করে ডাটা বাইন্ডিং
+              {...register("numberOfBoxSteps", { valueAsNumber: true })}
               className="w-full p-3.5 border border-gray-200 rounded-lg outline-none focus:ring-2 focus:ring-[#c8a24a]/20 focus:border-[#c8a24a] transition-all"
             />
           </motion.div>
