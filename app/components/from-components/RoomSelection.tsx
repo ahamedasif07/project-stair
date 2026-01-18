@@ -2,10 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useFormContext } from "../custom/FormContext";
-type RoomProps = {
-  roomCount: number;
-  setRoomCount: (value: number) => void;
-};
+
 type step = {
   step: string;
 };
