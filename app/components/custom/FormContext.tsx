@@ -1,14 +1,23 @@
 "use client";
 import React, { createContext, useContext, useState, ReactNode } from "react";
+import {
+  useForm,
+  FormProvider as RHFFormProvider,
+  UseFormReturn,
+} from "react-hook-form";
 
-// Define the shape of our global data
-interface FormContextType {
+// ১. ফর্মের ইনপুট টাইপ
+export interface FormInputs {
   stairShape: string;
-  setStairShape: (val: string) => void;
   selectedFinish: string;
-  setSelectedFinish: (val: string) => void;
   timeline: string;
-  setTimeline: (val: string) => void;
+  numberOfSteps: number;
+  numberOfLandings: number;
+  numberOfBoxSteps: number;
+}
+
+// ২. কনটেক্সট টাইপ (RHF এর মেথডসহ)
+interface FormContextType extends UseFormReturn<FormInputs> {
   roomCount: number;
   roomSizes: string[];
   removalType: string;
@@ -23,10 +32,17 @@ interface FormContextType {
 const FormContext = createContext<FormContextType | undefined>(undefined);
 
 export const FormProvider = ({ children }: { children: ReactNode }) => {
-  // States
-  const [stairShape, setStairShape] = useState("");
-  const [selectedFinish, setSelectedFinish] = useState("Light Oak");
-  const [timeline, setTimeline] = useState("");
+  const methods = useForm<FormInputs>({
+    defaultValues: {
+      stairShape: "",
+      selectedFinish: "Light Oak",
+      timeline: "",
+      numberOfSteps: 0,
+      numberOfLandings: 0,
+      numberOfBoxSteps: 0,
+    },
+  });
+
   const [roomCount, setRoomCount] = useState<number>(1);
   const [roomSizes, setRoomSizes] = useState<string[]>([""]);
   const [removalType, setRemovalType] = useState<string>("none");
@@ -41,16 +57,13 @@ export const FormProvider = ({ children }: { children: ReactNode }) => {
     { name: "Other", color: "bg-[#D1D5DB]" },
   ];
 
-  // Logic Functions
-  // Step 2 theke room count change hole eikhane array update hobe
   const handleRoomCountChange = (count: number) => {
     setRoomCount(count);
-    const newSizes = Array(count).fill("");
-    // Agonkar value gulo retain korbe (jodi thake)
-    roomSizes.forEach((val, i) => {
-      if (i < count) newSizes[i] = val;
-    });
-    setRoomSizes(newSizes);
+    setRoomSizes((prev) =>
+      Array(count)
+        .fill("")
+        .map((_, i) => prev[i] || ""),
+    );
   };
 
   const handleSizeChange = (index: number, value: string) => {
@@ -58,33 +71,29 @@ export const FormProvider = ({ children }: { children: ReactNode }) => {
     updatedSizes[index] = value;
     setRoomSizes(updatedSizes);
   };
-
+  console.log(methods.getValues("stairShape"));
   return (
-    <FormContext.Provider
-      value={{
-        stairShape,
-        setStairShape,
-        selectedFinish,
-        setSelectedFinish,
-        timeline,
-        setTimeline,
-        roomCount,
-        roomSizes,
-        removalType,
-        isModalOpen,
-        setIsModalOpen,
-        setRemovalType,
-        handleRoomCountChange,
-        handleSizeChange,
-        finishes,
-      }}
-    >
-      {children}
-    </FormContext.Provider>
+    <RHFFormProvider {...methods}>
+      <FormContext.Provider
+        value={{
+          ...methods,
+          roomCount,
+          roomSizes,
+          removalType,
+          isModalOpen,
+          setIsModalOpen,
+          setRemovalType,
+          handleRoomCountChange,
+          handleSizeChange,
+          finishes,
+        }}
+      >
+        {children}
+      </FormContext.Provider>
+    </RHFFormProvider>
   );
 };
 
-// Custom hook for easy access
 export const useFormContext = () => {
   const context = useContext(FormContext);
   if (!context)
