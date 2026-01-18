@@ -10,7 +10,7 @@ export default function Hero() {
   useEffect(() => {
     AOS.init({
       duration: 600, // অক্ষরের জন্য এটি আদর্শ গতি
-      once: true,
+      once: false,
       easing: "ease-out-quad",
     });
   }, []);

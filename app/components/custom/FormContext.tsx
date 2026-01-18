@@ -12,6 +12,8 @@ interface FormContextType {
   roomCount: number;
   roomSizes: string[];
   removalType: string;
+  isModalOpen: boolean;
+  setIsModalOpen: (val: boolean) => void;
   setRemovalType: (val: string) => void;
   handleRoomCountChange: (count: number) => void;
   handleSizeChange: (index: number, value: string) => void;
@@ -28,6 +30,7 @@ export const FormProvider = ({ children }: { children: ReactNode }) => {
   const [roomCount, setRoomCount] = useState<number>(1);
   const [roomSizes, setRoomSizes] = useState<string[]>([""]);
   const [removalType, setRemovalType] = useState<string>("none");
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const finishes = [
     { name: "Light Oak", color: "bg-[#EBDCC3]" },
@@ -68,6 +71,8 @@ export const FormProvider = ({ children }: { children: ReactNode }) => {
         roomCount,
         roomSizes,
         removalType,
+        isModalOpen,
+        setIsModalOpen,
         setRemovalType,
         handleRoomCountChange,
         handleSizeChange,

@@ -43,7 +43,7 @@ const StairsOnly = () => {
       </div>
 
       {/* Action Buttons */}
-      <div className="space-y-3 pt-4">
+      <div className="space-y-3 ">
         <FromButtons
           buttonOne="Continue to Contact Information"
           buttonTwo="Skip to Schedule"
